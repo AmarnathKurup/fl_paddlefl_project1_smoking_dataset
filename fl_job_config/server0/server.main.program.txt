@@ -1,0 +1,361 @@
+blocks {
+  idx: 0
+  parent_idx: -1
+  vars {
+    name: "fc_0.w_0.opti.trainer_1"
+    type {
+      type: LOD_TENSOR
+      lod_tensor {
+        tensor {
+          data_type: FP32
+          dims: 25
+          dims: 2
+        }
+      }
+    }
+    persistable: false
+  }
+  vars {
+    name: "fc_0.b_0.opti.trainer_1"
+    type {
+      type: LOD_TENSOR
+      lod_tensor {
+        tensor {
+          data_type: FP32
+          dims: 2
+        }
+      }
+    }
+    persistable: false
+  }
+  vars {
+    name: "fc_0.b_0.opti.trainer_0"
+    type {
+      type: LOD_TENSOR
+      lod_tensor {
+        tensor {
+          data_type: FP32
+          dims: 2
+        }
+      }
+    }
+    persistable: false
+  }
+  vars {
+    name: "fc_0.w_0.opti.trainer_0"
+    type {
+      type: LOD_TENSOR
+      lod_tensor {
+        tensor {
+          data_type: FP32
+          dims: 25
+          dims: 2
+        }
+      }
+    }
+    persistable: false
+  }
+  vars {
+    name: "fc_0.w_0"
+    type {
+      type: LOD_TENSOR
+      lod_tensor {
+        tensor {
+          data_type: FP32
+          dims: 25
+          dims: 2
+        }
+        lod_level: 0
+      }
+    }
+    persistable: true
+  }
+  vars {
+    name: "fc_0.b_0"
+    type {
+      type: LOD_TENSOR
+      lod_tensor {
+        tensor {
+          data_type: FP32
+          dims: 2
+        }
+        lod_level: 0
+      }
+    }
+    persistable: true
+  }
+  ops {
+    inputs {
+      parameter: "X"
+      arguments: "fc_0.b_0.opti.trainer_0"
+      arguments: "fc_0.b_0.opti.trainer_1"
+      arguments: "fc_0.w_0.opti.trainer_0"
+      arguments: "fc_0.w_0.opti.trainer_1"
+    }
+    type: "fl_listen_and_serv"
+    attrs {
+      name: "op_device"
+      type: STRING
+      s: ""
+    }
+    attrs {
+      name: "op_role_var"
+      type: STRINGS
+    }
+    attrs {
+      name: "op_callstack"
+      type: STRINGS
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle/fluid/framework.py\", line 2610, in append_op\n    attrs=kwargs.get(\"attrs\", None))\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/strategy/fl_distribute_transpiler.py\", line 492, in get_pserver_program\n    attrs=attrs)\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/strategy/fl_strategy_base.py\", line 236, in _build_server_programs_for_job\n    main_prog = transpiler.get_pserver_program(endpoint)\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/master/job_generator.py\", line 143, in generate_fl_job\n    startup_program=startup_program, job=local_job)\n"
+      strings: "  File \"fl_master.py\", line 35, in <module>\n    output=\"fl_job_config\"\n"
+    }
+    attrs {
+      name: "op_namescope"
+      type: STRING
+      s: "/"
+    }
+    attrs {
+      name: "op_role"
+      type: INT
+      i: 0
+    }
+    attrs {
+      name: "optimize_blocks"
+      type: BLOCKS
+      blocks_idx: 1
+      blocks_idx: 2
+    }
+    attrs {
+      name: "Fanin"
+      type: INT
+      i: 2
+    }
+    attrs {
+      name: "sync_mode"
+      type: BOOLEAN
+      b: true
+    }
+    attrs {
+      name: "endpoint"
+      type: STRING
+      s: "127.0.0.1:8181"
+    }
+  }
+}
+blocks {
+  idx: 1
+  parent_idx: 0
+  ops {
+    inputs {
+      parameter: "X"
+      arguments: "fc_0.b_0.opti.trainer_0"
+      arguments: "fc_0.b_0.opti.trainer_1"
+    }
+    outputs {
+      parameter: "Out"
+      arguments: "fc_0.b_0"
+    }
+    type: "sum"
+    attrs {
+      name: "op_device"
+      type: STRING
+      s: ""
+    }
+    attrs {
+      name: "op_role_var"
+      type: STRINGS
+    }
+    attrs {
+      name: "op_callstack"
+      type: STRINGS
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle/fluid/framework.py\", line 2610, in append_op\n    attrs=kwargs.get(\"attrs\", None))\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/strategy/fl_distribute_transpiler.py\", line 471, in get_pserver_program\n    attrs={\"use_mkldnn\": False})\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/strategy/fl_strategy_base.py\", line 236, in _build_server_programs_for_job\n    main_prog = transpiler.get_pserver_program(endpoint)\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/master/job_generator.py\", line 143, in generate_fl_job\n    startup_program=startup_program, job=local_job)\n"
+      strings: "  File \"fl_master.py\", line 35, in <module>\n    output=\"fl_job_config\"\n"
+    }
+    attrs {
+      name: "op_namescope"
+      type: STRING
+      s: "/"
+    }
+    attrs {
+      name: "op_role"
+      type: INT
+      i: 0
+    }
+    attrs {
+      name: "use_mkldnn"
+      type: BOOLEAN
+      b: false
+    }
+  }
+  ops {
+    inputs {
+      parameter: "ScaleTensor"
+    }
+    inputs {
+      parameter: "X"
+      arguments: "fc_0.b_0"
+    }
+    outputs {
+      parameter: "Out"
+      arguments: "fc_0.b_0"
+    }
+    type: "scale"
+    attrs {
+      name: "op_device"
+      type: STRING
+      s: ""
+    }
+    attrs {
+      name: "bias_after_scale"
+      type: BOOLEAN
+      b: true
+    }
+    attrs {
+      name: "bias"
+      type: FLOAT
+      f: 0.0
+    }
+    attrs {
+      name: "op_role_var"
+      type: STRINGS
+    }
+    attrs {
+      name: "op_callstack"
+      type: STRINGS
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle/fluid/framework.py\", line 2610, in append_op\n    attrs=kwargs.get(\"attrs\", None))\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/strategy/fl_distribute_transpiler.py\", line 476, in get_pserver_program\n    attrs={\"scale\": 1.0 / float(self.trainer_num)})\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/strategy/fl_strategy_base.py\", line 236, in _build_server_programs_for_job\n    main_prog = transpiler.get_pserver_program(endpoint)\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/master/job_generator.py\", line 143, in generate_fl_job\n    startup_program=startup_program, job=local_job)\n"
+      strings: "  File \"fl_master.py\", line 35, in <module>\n    output=\"fl_job_config\"\n"
+    }
+    attrs {
+      name: "op_namescope"
+      type: STRING
+      s: "/"
+    }
+    attrs {
+      name: "op_role"
+      type: INT
+      i: 0
+    }
+    attrs {
+      name: "scale"
+      type: FLOAT
+      f: 0.5
+    }
+  }
+}
+blocks {
+  idx: 2
+  parent_idx: 0
+  ops {
+    inputs {
+      parameter: "X"
+      arguments: "fc_0.w_0.opti.trainer_0"
+      arguments: "fc_0.w_0.opti.trainer_1"
+    }
+    outputs {
+      parameter: "Out"
+      arguments: "fc_0.w_0"
+    }
+    type: "sum"
+    attrs {
+      name: "op_device"
+      type: STRING
+      s: ""
+    }
+    attrs {
+      name: "op_role_var"
+      type: STRINGS
+    }
+    attrs {
+      name: "op_callstack"
+      type: STRINGS
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle/fluid/framework.py\", line 2610, in append_op\n    attrs=kwargs.get(\"attrs\", None))\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/strategy/fl_distribute_transpiler.py\", line 471, in get_pserver_program\n    attrs={\"use_mkldnn\": False})\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/strategy/fl_strategy_base.py\", line 236, in _build_server_programs_for_job\n    main_prog = transpiler.get_pserver_program(endpoint)\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/master/job_generator.py\", line 143, in generate_fl_job\n    startup_program=startup_program, job=local_job)\n"
+      strings: "  File \"fl_master.py\", line 35, in <module>\n    output=\"fl_job_config\"\n"
+    }
+    attrs {
+      name: "op_namescope"
+      type: STRING
+      s: "/"
+    }
+    attrs {
+      name: "op_role"
+      type: INT
+      i: 0
+    }
+    attrs {
+      name: "use_mkldnn"
+      type: BOOLEAN
+      b: false
+    }
+  }
+  ops {
+    inputs {
+      parameter: "ScaleTensor"
+    }
+    inputs {
+      parameter: "X"
+      arguments: "fc_0.w_0"
+    }
+    outputs {
+      parameter: "Out"
+      arguments: "fc_0.w_0"
+    }
+    type: "scale"
+    attrs {
+      name: "op_device"
+      type: STRING
+      s: ""
+    }
+    attrs {
+      name: "bias_after_scale"
+      type: BOOLEAN
+      b: true
+    }
+    attrs {
+      name: "bias"
+      type: FLOAT
+      f: 0.0
+    }
+    attrs {
+      name: "op_role_var"
+      type: STRINGS
+    }
+    attrs {
+      name: "op_callstack"
+      type: STRINGS
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle/fluid/framework.py\", line 2610, in append_op\n    attrs=kwargs.get(\"attrs\", None))\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/strategy/fl_distribute_transpiler.py\", line 476, in get_pserver_program\n    attrs={\"scale\": 1.0 / float(self.trainer_num)})\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/strategy/fl_strategy_base.py\", line 236, in _build_server_programs_for_job\n    main_prog = transpiler.get_pserver_program(endpoint)\n"
+      strings: "  File \"/usr/local/lib/python3.7/site-packages/paddle_fl/core/master/job_generator.py\", line 143, in generate_fl_job\n    startup_program=startup_program, job=local_job)\n"
+      strings: "  File \"fl_master.py\", line 35, in <module>\n    output=\"fl_job_config\"\n"
+    }
+    attrs {
+      name: "op_namescope"
+      type: STRING
+      s: "/"
+    }
+    attrs {
+      name: "op_role"
+      type: INT
+      i: 0
+    }
+    attrs {
+      name: "scale"
+      type: FLOAT
+      f: 0.5
+    }
+  }
+}
+version {
+  version: 1008005
+}
