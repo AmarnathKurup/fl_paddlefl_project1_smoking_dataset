@@ -15,7 +15,7 @@ Build the docker environment  : docker build -t paddlefl_env .
 3. Run the docker container : docker run -it -v ${PWD}:/workspace paddlefl_env
 
 4. Generate Federated Learning Job Configuration 
-python generate_fl_job.py this creates the fl_job_config folder
+python fl_master.py this creates the fl_job_config folder
 
 5. Start the server
 python fl_server.py 
